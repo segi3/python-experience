@@ -61,6 +61,15 @@ class Person:
     def reduce_mp(self, cost):
         self.mp -= cost
     
+    def choose_target(self, enemies):
+        i = 1
+        print("\n" + "    Target enemies:")
+        for enemy in enemies:
+            print("    " + str(i) + ":" + enemy.get_name())
+            i += 1
+        choice = int(input("    Choose target:")) - 1
+        return choice
+
     def choose_action(self):
         i = 1
         print("\n" + "    " + self.name + " turn")
@@ -86,16 +95,41 @@ class Person:
     def get_stats(self):
         hp_bar = ""
         hp_bar_total = (self.hp / self.maxHp) * 100 / 4
+
         while hp_bar_total > 0:
             hp_bar += "█"
             hp_bar_total -= 1
         
         while len(hp_bar) < 25:
             hp_bar += " "
-
-        print("                        _________________________           __________")
-        print(self.name + ":    " + str(self.hp) + "/" + str(self.maxHp) + "    |" + hp_bar + "|   " +  str(self.mp) + "/" + str(self.maxMp) + " |██████████|")
+        
+        mp_bar = ""
+        mp_bar_total = (self.mp / self.maxMp) * 100 / 10
+        
+        while mp_bar_total > 0:
+            mp_bar += "█"
+            mp_bar_total -= 1
+        
+        while len(mp_bar) < 10:
+            mp_bar += " "
+        
+        print("                        _________________________             __________")
+        print(f'{self.name: <8}' + ":   " + f'{str(self.hp) + "/" + str(self.maxHp): <11}' + "|" + hp_bar + "|  " +  f'{str(self.mp) + "/" + str(self.maxMp): <8}' + " |" + mp_bar + "|")
+        # print(f'{self.name: <8}' + ': ' + f'{str(self.hp) + "/" + str(self.maxHp): <9}')
     
+    def get_enemy_stats(self):
+        hp_bar = ""
+        hp_bar_total = (self.hp / self.maxHp) * 100 / 2
+
+        while hp_bar_total > 0:
+            hp_bar += "█"
+            hp_bar_total -= 1
+        
+        while len(hp_bar) < 50:
+            hp_bar += " "
+        
+        print("                        __________________________________________________")
+        print(f'{self.name: <8}' + ': ' + f'{str(self.hp) + "/" + str(self.maxHp): <12}' + " |" + hp_bar + "|")
 
 
     
