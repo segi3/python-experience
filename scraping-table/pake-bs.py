@@ -35,11 +35,11 @@ for th in target_table_data[0].find_all("th"):
     headings.append(th.text.replace('\n', '').strip())
 
 # * make 2d list
-rows, cols = (4, 10)
+rows, cols = (1000, 10)
 data = [[0 for i in range(cols)] for j in range(rows)]
 
 # * append table body
-for x in range(1, 4):
+for x in range(1, 1000):
     # print(f"\nx: {x}")
     for td, j in zip(target_table_data[x].find_all("td"), range(0, 10)):
         # print(td.text)
@@ -49,7 +49,7 @@ data[0] = headings # append head to data
 # print(data)
 
 # * write to csv
-with open('poke_csv.csv', 'w+', newline='') as csv_file:
+with open('poke_csv.csv', 'w+', newline='', encoding="utf-8") as csv_file:
     csvWriter = csv.writer(csv_file, delimiter=',')
     csvWriter.writerows(data)
 
