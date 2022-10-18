@@ -97,7 +97,7 @@ while running:
             elif spell.get_type() == "black":
                 target = player.choose_target(enemies)
                 enemies[target].take_damage(magic_damage)
-                print(bcolors.FAIL + "\n" + spell.get_name() + " deals", magic_damage, "magic damage to", enemies[target].get_name(), bcolors.ENDC)
+                print("\n" + spell.get_name() + " deals", magic_damage, "magic damage to", enemies[target].get_name())
 
                 if enemies[target].get_hp() == 0:
                     print(enemies[target].get_name() + " has died")
