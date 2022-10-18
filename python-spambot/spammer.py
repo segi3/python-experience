@@ -1,9 +1,14 @@
 import pyautogui as pyg
 import time
 
-f = open("words.txt", 'r')
+f = open("bee_movie.txt", 'r')
+
+count = 0;
 
 for word in f:
-    print(word)
+    if count == 2000:
+        break
+    print(word + ' ' + str(count))
     pyg.typewrite(word)
     pyg.press("enter")
+    count=count+1
